@@ -1,7 +1,7 @@
 .description {
     margin: 0 -5%;
     float: left;
-    display: inline-block;
+    display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
     white-space: nowrap;
@@ -19,4 +19,8 @@
     flex: 1;
     padding: 1rem 6.5rem;
     margin: 1rem 1rem;
+}
+
+.attackButton {
+    display: inline-block;
 }

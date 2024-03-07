@@ -6,3 +6,7 @@
     margin: 5% 0;
     float: center;
 }
+
+.attackButton {
+    display: inline-flex;
+}

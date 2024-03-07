@@ -1,41 +1,43 @@
-import React, {useState} from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './PokemonSelector.module.css';
-import pokemonOptions from './Pokemon.ts';
-import Select from 'react-select'
-import PokemonCard from './PokemonCard.tsx';
-import Attack from './Attack.tsx';
+import pokemonOptions from './Pokemon';
+import PokemonCard from './PokemonCard';
+import Attack from '../Player/Attack';
 
-const PokemonSelector = () => {
-    const [optionPicked, setOptionPicked] = useState(true);
-    const [selectedPokemon, setSelectedPokemon] = useState({value: "none" , label: "none"});
+interface Option {
+  value: string;
+  label: string;
+}
 
-    function updateSelected(selected){
-        // if(selected != null){
-        //     setOptionPicked(true)
-        //     setSelectedPokemon(selected)
-        // } else {
-        //     setOptionPicked(false)
-        //     setSelectedPokemon({value: "none" , label: "none"})
-        // }
-    }
+const PokemonSelector: React.FC = () => {
+  const [optionPicked, setOptionPicked] = useState<boolean>(false);
+  const [selectedPokemon, setSelectedPokemon] = useState<Option | null>(null);
+  const defenseHPRef = useRef(null);
 
-    return (
-        <div className={styles.selectContainer}>
-            <Select 
-                options={pokemonOptions}
-                className={styles.pokemonSelect}
-                placeholder = {"Pick a Pokemon"}
-                getOptionLabel={option => option.label}
-                getOptionValue={option => option.value}
-                onChange={selected => updateSelected(selected)}
-                isClearable
-            />
-            <div className={styles.pokemonCard}>
-                {optionPicked && <PokemonCard selected={selectedPokemon.value}/>}
-                {optionPicked && <Attack/>}
-            </div>
-        </div>
-    );
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = event.target.value;
+    const option = pokemonOptions.find(option => option.value === selectedValue);
+    setSelectedPokemon(option || null);
+    setOptionPicked(!!option);
+  };
+
+  return (
+    <div className={styles.selectContainer}>
+      <select
+        className={styles.pokemonSelect}
+        value={selectedPokemon?.value || ''}
+        onChange={handleSelectChange}
+      >
+        <option value="" disabled hidden>Pick a Pokemon</option>
+        {pokemonOptions.map(option => (
+          <option key={option.value} value={option.value}>{option.label}</option>
+        ))}
+      </select>
+      <div className={styles.pokemonCard}>
+        {optionPicked && <PokemonCard selected={selectedPokemon?.value} defenseHPRef={defenseHPRef} />}
+      </div>
+    </div>
+  );
 };
 
 export default PokemonSelector;

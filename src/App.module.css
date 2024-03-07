@@ -1,0 +1,41 @@
+@import "./vars.css";
+* {
+  /* border: 1px solid black; */
+  background-color: rgb(f, f, f);
+}
+
+.App {
+  position: center;
+  background-color: #04152d;
+}
+
+div {
+
+}
+
+.Player1{
+  display: inline-block;
+  width: 45vw;
+  height: 95vh;
+  margin: 1rem;
+  background-color: rgba(208, 6, 6, 0.7);
+}
+
+.Player2{
+  display: inline-block;
+  width: 45vw;
+  height: 95vh;
+  margin: 1rem;
+  background-color: rgba(20, 24, 250, 0.8);
+}
+
+.Player1Img {
+  background-color: rgba(210, 40, 40, 0.1);
+}
+
+.Player2Img {
+}
+
+.PokemonSelector{
+  background-color: rgba(175, 84, 84, 0.1);;
+}

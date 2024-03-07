@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Pikachu",
+    "type": "Electric",
+    "HP": 140,
+    "defenseHP": 15,
+    "attackHP": 30,
+    "legend": false
+  },
+  {
+    "name": "Bulbasaur",
+    "type": "Grass",
+    "HP": 120,
+    "defenseHP": 20,
+    "attackHP": 30,
+    "legend": false
+  },
+  {
+    "name": "Charmander",
+    "type": "Fire",
+    "HP": 150,
+    "defenseHP": 15,
+    "attackHP": 35,
+    "legend": false
+  },
+  {
+    "name": "Squirtle",
+    "type": "Water",
+    "HP": 130,
+    "defenseHP": 10,
+    "attackHP": 25,
+    "legend": false
+  },
+  {
+    "name": "Articuno",
+    "type": "Flying",
+    "HP": 400,
+    "defenseHP": 50,
+    "attackHP": 60,
+    "legend": true
+  }
+]

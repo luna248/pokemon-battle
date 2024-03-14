@@ -102,5 +102,5 @@
     "jsx": "react",
   },
   "include": ["src/**/*.tsx", "src/**/*.ts", "other/directory/**/*.ts", "src/App.js", "src/App.js"],
-  "exclude": ["node_modules"]
+  "typeAcquisition": { "enable": true }
 }

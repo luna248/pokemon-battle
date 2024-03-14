@@ -1,4 +1,5 @@
 import React from 'react';
+//@ts-ignore
 import styles from './Player.module.css';
 import player1 from '../assets/player1.png';
 

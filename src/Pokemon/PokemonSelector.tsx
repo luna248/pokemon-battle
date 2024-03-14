@@ -9,16 +9,19 @@ interface Option {
   label: string;
 }
 
-const PokemonSelector: React.FC = () => {
-  const [optionPicked, setOptionPicked] = useState<boolean>(false);
+const PokemonSelector = (props : any) => {
+  const [optionPicked, setOptionPicked] = useState(false);
   const [selectedPokemon, setSelectedPokemon] = useState<Option | null>(null);
   const defenseHPRef = useRef(null);
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
-    const option = pokemonOptions.find(option => option.value === selectedValue);
+    const option = pokemonOptions.find((option: { value: string; }) => option.value === selectedValue);
     setSelectedPokemon(option || null);
     setOptionPicked(!!option);
+
+    console.log(props.value, " picked")
+    console.log(option)
   };
 
   return (
@@ -33,9 +36,11 @@ const PokemonSelector: React.FC = () => {
           <option key={option.value} value={option.value}>{option.label}</option>
         ))}
       </select>
+
       <div className={styles.pokemonCard}>
-        {optionPicked && <PokemonCard selected={selectedPokemon?.value} defenseHPRef={defenseHPRef} />}
+        {optionPicked && <PokemonCard player={props.value} selected={selectedPokemon?.value} />}
       </div>
+
     </div>
   );
 };

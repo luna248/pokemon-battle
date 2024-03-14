@@ -13,6 +13,13 @@ div {
 
 }
 
+.HPDescription {
+  display: inline-flex;
+  flex: nowrap;
+  padding: 0rem 6rem 0rem 6.5rem;
+  margin: 1rem;
+}
+
 .Player1{
   display: inline-block;
   width: 45vw;

@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import styles from './PokemonSelector.module.css';
 import pokemonOptions from './Pokemon';
 import PokemonCard from './PokemonCard';
-import Attack from '../Player/Attack';
 
 interface Option {
   value: string;
@@ -12,16 +11,16 @@ interface Option {
 const PokemonSelector = (props : any) => {
   const [optionPicked, setOptionPicked] = useState(false);
   const [selectedPokemon, setSelectedPokemon] = useState<Option | null>(null);
-  const defenseHPRef = useRef(null);
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
     const option = pokemonOptions.find((option: { value: string; }) => option.value === selectedValue);
+    
     setSelectedPokemon(option || null);
     setOptionPicked(!!option);
 
-    console.log(props.value, " picked")
-    console.log(option)
+    console.log("Checking: ", option)
+    props.updatePlayer(option)
   };
 
   return (
@@ -38,7 +37,7 @@ const PokemonSelector = (props : any) => {
       </select>
 
       <div className={styles.pokemonCard}>
-        {optionPicked && <PokemonCard player={props.value} selected={selectedPokemon?.value} />}
+        {optionPicked && <PokemonCard player={props.name} selected={selectedPokemon?.value} />}
       </div>
 
     </div>

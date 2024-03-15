@@ -65,6 +65,7 @@ function App() {
             }
         </div>
       </div>
+      
       <div className={styles.Player2}>
         <div className={styles.Player2Img}>
           <Player source={player2} name={'Player 2'}></Player>
